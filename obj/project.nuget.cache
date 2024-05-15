@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qU/I6IiUCPv1IL+ZFIpKXyKOIaSqO4CZMNMEAs7Q74d3iPhD2ZXlJF2DVKctrFlN/emloYs7neYcAX48MK7i6Q==",
+  "dgSpecHash": "L2KvEjIvnj6e05kARCp3jnUZiMau3VIBiXant3jvH/5unaYtNttNIr+WwWjdGZu2DPauDKWdHu9v071FWRKDMg==",
   "success": true,
   "projectFilePath": "/home/vokhanh/development/web_csharp/BuyProductOnline/BuyProductOnline.csproj",
   "expectedPackageFiles": [
@@ -177,16 +177,5 @@
     "/home/vokhanh/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/home/vokhanh/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "BuyProductOnline depends on Microsoft.VisualStudio.Web.CodeGeneration.Design (>= 5.0.12) but Microsoft.VisualStudio.Web.CodeGeneration.Design 5.0.12 was not found. An approximate best match of Microsoft.VisualStudio.Web.CodeGeneration.Design 6.0.0 was resolved.",
-      "libraryId": "Microsoft.VisualStudio.Web.CodeGeneration.Design",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }
