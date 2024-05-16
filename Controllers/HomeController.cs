@@ -54,10 +54,12 @@ namespace BuyProductOnline.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Type")] User user)
+        public async Task<IActionResult> Create([Bind("Id, Name, Type")] User user)
         {
+            TempData["SuccessMessage"] = $"{ModelState.IsValid} Id:{user.Id} Name:{user.Name} Type:{user.Type}";
             if (ModelState.IsValid)
             {
+               TempData["SuccessMessage"] = "User created successfully!";
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -149,5 +151,10 @@ namespace BuyProductOnline.Controllers
         {
             return _context.User.Any(e => e.Id == id);
         }
+
+
     }
+
+
+
 }
