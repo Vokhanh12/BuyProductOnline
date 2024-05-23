@@ -10,94 +10,85 @@ using MvcMovie.Models;
 
 namespace BuyProductOnline.Controllers
 {
-    public class HomeController : Controller
+    public class ItemController : Controller
     {
         private readonly BuyProductOnlineContext _context;
 
-        public HomeController(BuyProductOnlineContext context)
+        public ItemController(BuyProductOnlineContext context)
         {
             _context = context;
         }
 
-        // GET: Home
+        // GET: Item
         public async Task<IActionResult> Index()
         {
-            return View(await _context.User.ToListAsync());
+            return View(await _context.Item.ToListAsync());
         }
 
-        // GET: Home/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: Item/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.User
+            var item = await _context.Item
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(item);
         }
 
-        // GET: Home/Create
+        // GET: Item/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        
-        // GET: Home/IndexHome
-        public IActionResult IndexHome()
-        {
-            return View();
-        }
-
-        // POST: Home/Create
+        // POST: Item/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id, Name, Type")] User user)
+        public async Task<IActionResult> Create([Bind("Id,ItemCatalogId,ImageUrl,Name,Price,Type")] Item item)
         {
-            TempData["SuccessMessage"] = $"{ModelState.IsValid} Id:{user.Id} Name:{user.Name} Type:{user.Type}";
             if (ModelState.IsValid)
             {
-               TempData["SuccessMessage"] = "User created successfully!";
-                _context.Add(user);
+                _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(item);
         }
 
-        // GET: Home/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: Item/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
+            var item = await _context.Item.FindAsync(id);
+            if (item == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(item);
         }
 
-        // POST: Home/Edit/5
+        // POST: Item/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Type")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ItemCatalogId,ImageUrl,Name,Price,Type")] Item item)
         {
-            if (id != user.Id)
+            if (id != item.Id)
             {
                 return NotFound();
             }
@@ -106,12 +97,12 @@ namespace BuyProductOnline.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(item);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id))
+                    if (!ItemExists(item.Id))
                     {
                         return NotFound();
                     }
@@ -122,46 +113,41 @@ namespace BuyProductOnline.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(item);
         }
 
-        // GET: Home/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Item/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.User
+            var item = await _context.Item
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(item);
         }
 
-        // POST: Home/Delete/5
+        // POST: Item/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
+            var item = await _context.Item.FindAsync(id);
+            _context.Item.Remove(item);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(string id)
+        private bool ItemExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _context.Item.Any(e => e.Id == id);
         }
-
-
     }
-
-
-
 }

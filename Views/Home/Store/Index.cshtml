@@ -1,0 +1,52 @@
+@model MvcMovie.Models.Item
+@{
+    ViewData["Title"] = "Index - Store";
+}
+
+<style>
+    /* Adjust the font size of SVG icons inside buttons */
+    svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    button {
+        border: none;
+        padding: 5px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex flex-wrap justify-content-start">
+            
+            
+                <dl class="row">
+        <dt cl  ass = "col-sm-2">
+            @Html.
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+       
+    </dl>
+
+
+            <div class="card m-2 btn" style="width: 18rem;">
+                // image
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Image description">
+                <div class="card-body">
+                    // name
+                    <h5 class="card-title">Card title 1</h5>
+                    // type
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    // price
+                    <a href="#">Price</a>
+                </div>
+            </div>
+
+  
+
+        </div>
+    </div>
+</div>

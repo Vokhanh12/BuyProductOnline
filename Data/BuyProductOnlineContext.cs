@@ -15,5 +15,9 @@ namespace BuyProductOnline.Data
         }
 
         public DbSet<MvcMovie.Models.User> User { get; set; }
+
+        public DbSet<MvcMovie.Models.Store> Store { get; set; }
+
+        public DbSet<MvcMovie.Models.Item> Item { get; set; }
     }
 }

@@ -1,0 +1,1 @@
+dotnet aspnet-codegenerator controller -name StoreController -m Store -dc BuyProductOnline.Data.BuyProductOnlineContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries 

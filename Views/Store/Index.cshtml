@@ -1,0 +1,26 @@
+@model IEnumerable<MvcMovie.Models.Store>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+  
+@foreach (var item in Model) {
+    <div class="card m-2 btn" style="width: 18rem;">
+        // Ảnh
+        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Image description">
+        <div class="card-body">
+            // Tên
+            <h5 class="card-title">@item.Name</h5>
+            // Loại
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            // Giá
+        </div>
+    </div>
+}
+
+
+
